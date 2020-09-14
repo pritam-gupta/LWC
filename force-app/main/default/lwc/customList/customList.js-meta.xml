@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="customList">
+    <apiVersion>45.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Custom Related List Component</masterLabel>
+    <description>This is a custom related list component.</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="listTitle" label="Title" type="String" description="Enter the title to be displayed for related list."/>
+            <property required="true" name="listObjApiName" label="Related List Object" type="String" description="Enter the object api for which records to be displayed."/>
+            <property required="true" name="listFields" label="Related List Fields" type="String" description="Enter field's api name to be displyed in related list. Multiple fields can be entered separated by comma."/>
+            <property required="true" name="relatedField" label="Related Field" type="String" description="Enter the related field's api name"/>
+            <property name="sortedBy" label="Default Sort by Field" type="String" description="Enter the field's api name to sort the result initially."/>
+            <property name="filterLogic" label="Filter Logic" type="String" description="Enter the filters with logic to filter out the records. Exclude 'WHERE' from the filter."/>
+            <property name="limitSize" label="LIMIT Size per Load" type="Integer" default="30" description="Enter the limit size per loading, i.e number of records loaded per call."/>
+            <property name="listIcon" label="Icon Name" type="String" default="standard:related_list" description="Enter the icon name for the related list. for ex. standard:contact"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

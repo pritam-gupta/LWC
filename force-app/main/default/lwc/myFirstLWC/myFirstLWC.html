@@ -1,0 +1,39 @@
+<template>
+   <!-- {name} &nbsp;&nbsp;    &nbsp;{title} &nbsp;  {phone}
+
+    <template if:true={name}>
+        <p>
+            {name }
+        </p>
+    </template>
+    <template if:false={name}>
+        <strong>Name of the user is blank!</strong>
+    </template> -->
+
+    <lightning-card title="My First Lightnig Component" icon-name="custom:custom4">
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item padding="around-small">
+                <lightning-formatted-text value={name} ></lightning-formatted-text>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <lightning-formatted-text value={title} ></lightning-formatted-text>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <lightning-formatted-text value={email} ></lightning-formatted-text>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <lightning-formatted-phone value={phone} ></lightning-formatted-phone>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <lightning-formatted-text value={userId} ></lightning-formatted-text>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout vertical-align="center">
+            <lightning-layout-item padding="around-small">
+                <lightning-button label="call 35" variant="brand" onclick={handleClick} ></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+        
+    </lightning-card>
+</template>

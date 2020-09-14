@@ -1,0 +1,35 @@
+<!--
+/**
+* **********************************************************************************************************
+* Lightning Wec Component   :   customModal
+* Includes                  :   customModal.html, customModal.js, customModal.js-meta.xml files.
+* ***********************************************************************************************************
+* @author       Extentia Information Technology
+* @created      2019-Apr-18
+* @version      1.0
+* @description  The lightning web component "customModal" renders the UI for showing modal which is dynamic and 
+                can be used/composed in any other lightning component. You have to specify the header, content 
+                and main action dynamically as an attribute to this component.
+*/
+-->
+<template>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading" aria-modal="true" aria-describedby="modal-content" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <!-- Custom Modal Header -->
+            <header class="slds-modal__header">
+                <lightning-button-icon icon-name="utility:close" name="close" variant="border-inverse" onclick={handleClick} alternative-text="Close" class="slds-modal__close slds-button__icon_large"></lightning-button-icon>
+                <h2 id="modal-heading" class="slds-text-heading_medium slds-hyphenate">{header}</h2>
+            </header>
+            <!-- Custom Modal Body -->
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content">
+                <p>{content}</p>
+            </div>
+            <!-- Custom Modal Footer which displayes buttons -->
+            <footer class="slds-modal__footer">
+                <lightning-button variant="neutral" label="Cancel" title="Cancel" name="cancel" onclick={handleClick}></lightning-button>
+                <lightning-button variant="brand" label={action} title={action} name={actionLowerCase} onclick={handleClick} class="btnActionCls"></lightning-button>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

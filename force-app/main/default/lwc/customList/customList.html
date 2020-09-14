@@ -1,0 +1,65 @@
+<!--
+/**
+* **********************************************************************************************************
+* Lightning Wec Component   :   customList
+* Includes                  :   customList.html, customList.js, customList.css, customList.js-meta.xml files.
+* ***********************************************************************************************************
+* @author       Extentia Information Technology
+* @created      2019-Apr-08
+* @version      1.0
+* @description  The lightning web component "customList" renders the UI for related list which is dynamic and 
+                supported for any object. This component also provides functionality for searching on specific 
+                fields, sorting columns, viewing, editing, deleting specific record, creating new record. 
+                Also it provides the pagination on scrolling the list.
+*/
+-->
+<template>
+    <div class="wrapperDiv">
+        <template if:true={error}>
+                <p>{error}</p>
+            </template>
+        
+            <template if:true={renderTable}>
+                <lightning-card  variant="Narrow"  title={customTitle} icon-name={listIcon} class="txtCardCls">
+                    <!-- Related List Header -->
+                    
+                    <div slot="actions" class="divActionCls">
+                        <lightning-combobox data-id="cmbxSearch" variant="label-hidden" placeholder="Select Search Field" options={searchOptions} onchange={handleSearchFieldChange} required message-when-value-missing="Please select field to search"></lightning-combobox>
+                        <lightning-input data-id="txtSearch" type="search" variant="label-hidden" class="txtSearchCls" placeholder="Search" onchange={handleSearchTxtChange} min-length="2" message-when-too-short="Please enter at least 2 characters and select field to search"></lightning-input>
+                        <!--lightning-input data-id="txtSearch" type="search" value={searchTxt} variant="label-hidden" class="txtSearchCls" placeholder="Search" onchange={handleSearch}></lightning-input-->
+                        <lightning-button-group>
+                                <lightning-button-icon if:true={isCreateable} icon-name="utility:new" variant="border-filled" onclick={createRecord} alternative-text="New"></lightning-button-icon>
+                                <lightning-button-icon icon-name="utility:refresh" variant="border-filled" onclick={handleRefresh} alternative-text="Refresh"></lightning-button-icon>
+                        </lightning-button-group>                
+                    </div>
+                    <!-- Related List Body -->
+                    <div class="lgc-bg" style="height: 300px;">
+                        <lightning-datatable
+                                key-field="Id"
+                                data={tableData}
+                                columns={columns}
+                                sorted-by={sortedBy}
+                                sorted-direction={sortedDirection}
+                                hide-checkbox-column
+                                enable-infinite-loading={enableInfiniteLoading}
+                                load-more-offset="3"
+                                onrowaction={handleRowAction}
+                                onsort={handleColumnSorting}
+                                onloadmore={handleLoadMoreData}
+                                is-loading={tableLoadingState}
+                                errors={error}>
+                        </lightning-datatable>
+                    </div>
+                </lightning-card>
+            </template>
+    </div>
+
+
+    <!-- Independent component to display Modal -->
+    <template if:true={isShowDialog}>
+        <div style="height: 640px;">
+            <c-custom-modal header={modalHeader} content={modalContent} action={modalAction} onmodalaction={handleModalAction}></c-custom-modal>
+        </div>
+    </template>
+
+</template>

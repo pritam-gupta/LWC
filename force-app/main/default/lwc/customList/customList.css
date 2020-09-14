@@ -1,0 +1,28 @@
+.lgc-bg {
+    background-color: rgb(242, 242, 242);
+}
+
+.lgc-bg-inverse {
+    background-color: rgb(22, 50, 92);
+}
+
+.slds-text-heading_small {
+    font-weight: bold !important;
+}
+
+.divActionCls {
+    display: inline-flex;
+}
+
+.txtSearchCls {
+    margin: 0px 10px;
+}
+
+.slds-slds-scrollable_y, .slds-scrollable--y {
+    height: 100% !important;
+}
+
+.wrapperDiv {
+    border: 1px solid rgb(221, 219, 218) !important;
+    padding: .75rem 1rem 0;
+}
